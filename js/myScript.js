@@ -18,25 +18,41 @@
     ev.target.innerHTML = "I was clicked!";
   }
 
-  document.querySelector(".red").addEventListener("click", function () {
-    document.body.style.backgroundColor = "red";
-  });
+  // document.querySelector(".red").addEventListener("click", function () {
+  //   document.body.style.backgroundColor = "red";
+  // });
 
-  document.querySelector(".green").addEventListener("click", function () {
-    document.body.style.backgroundColor = "green";
-  });
+  // document.querySelector(".green").addEventListener("click", function () {
+  //   document.body.style.backgroundColor = "green";
+  // });
 
-  document.querySelector(".blue").addEventListener("click", function () {
-    document.body.style.backgroundColor = "blue";
-  });
+  // document.querySelector(".blue").addEventListener("click", function () {
+  //   document.body.style.backgroundColor = "blue";
+  // });
 
   // document.querySelector(".reset").addEventListener("click", function () {
   //   document.body.style.backgroundColor = "white";
   // });
 
-  document.querySelector(".reset").addEventListener("click", function () {
-    document.body.removeAttribute("class", "reset");
-  });
+  document.querySelector("nav ul li").setAttribute("class", "currentPage");
+
+  var colourButtons = document.querySelectorAll(".colPicker");
+
+  console.dir(colourButtons);
+
+  for (var i = 0; i < colourButtons.length; i++) {
+    colourButtons[i].addEventListener("click", chgColour);
+  }
+
+  function chgColour(ev) {
+    var colourPicked = ev.target.classlist[0] + "Back";
+    var bodyElement = document.querySelector("body");
+    if (colourPicked == "resetBack") {
+      bodyElement.removeAttribute("class");
+    } else {
+      bodyElement.setAttribute("class", colourPicked);
+    }
+  }
 
   //end code
 })();
